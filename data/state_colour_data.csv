@@ -1,54 +1,54 @@
-US State, Colour
-AL, red
-AK, red
-AZ, blue
-AR, red
-CA, blue
-CO, blue
-CT, blue
-DE, blue
-DC, blue
-FL, red
-GA, blue
-HI, blue
-ID, red
-Il, blue
-IN, red
-IA, red
-KS, red
-KY, red
-LA, red
-ME, blue
-MD, blue
-MA, blue
-MI, blue
-MN, blue
-MS, red
-MO, red
-MT, red
-NE, red
-NV, blue
-NH, blue
-NJ, blue
-NM, blue
-NY, blue
-NC, red
-ND, red
-OH, red
-OK, red
-OR, blue
-PA, blue
-RI, blue
-SC, red
-SD, red
-VT, blue
-Va, blue
-TN, red
-TX, red
-UT, red
-VT, blue
-VA, blue
-WA, blue
-WV, red
-WI, blue
-WY, red
+US State,Colour
+AL,crimson
+AK,crimson
+AZ,royalblue
+AR,crimson
+CA,royalblue
+CO,royalblue
+CT,royalblue
+DE,royalblue
+DC,royalblue
+FL,crimson
+GA,royalblue
+HI,royalblue
+ID,crimson
+IL,royalblue
+IN,crimson
+IA,crimson
+KS,crimson
+KY,crimson
+LA,crimson
+ME,royalblue
+MD,royalblue
+MA,royalblue
+MI,royalblue
+MN,royalblue
+MS,crimson
+MO,crimson
+MT,crimson
+NE,crimson
+NV,royalblue
+NH,royalblue
+NJ,royalblue
+NM,royalblue
+NY,royalblue
+NC,crimson
+ND,crimson
+OH,crimson
+OK,crimson
+OR,royalblue
+PA,royalblue
+RI,royalblue
+SC,crimson
+SD,crimson
+VT,royalblue
+Va,royalblue
+TN,crimson
+TX,crimson
+UT,crimson
+VT,royalblue
+VA,royalblue
+WA,royalblue
+WV,crimson
+WI,royalblue
+WY,crimson
