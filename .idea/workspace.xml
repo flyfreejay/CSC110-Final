@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b64245dd-a6ec-4515-bda1-9acd31ce21b4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/good_work/bubble_map_with_color_and_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/good_work/bubble_map_with_color_and_scale.py" afterDir="false" />
-    </list>
+    <list default="true" id="b64245dd-a6ec-4515-bda1-9acd31ce21b4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

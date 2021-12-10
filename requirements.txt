@@ -7,4 +7,4 @@ python-ta
 
 #Graphics and Data Visualization
 plotly
-panda
+pandas
