@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b64245dd-a6ec-4515-bda1-9acd31ce21b4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/good_work/bubble_map_with_color_and_scale.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hate_crime_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/hate_crime_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/state_colour_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/state_colour_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/good_work/bubble_map_with_color_and_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/good_work/bubble_map_with_color_and_scale.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
