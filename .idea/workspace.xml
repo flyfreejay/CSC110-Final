@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b64245dd-a6ec-4515-bda1-9acd31ce21b4" name="Changes" comment="" />
+    <list default="true" id="b64245dd-a6ec-4515-bda1-9acd31ce21b4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/proof_of_concepts/bubble_map_with_delta_proportion_bubbles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/hate_crime_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/hate_crime_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/state_colour_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/state_colour_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/good_work/bubble_map_with_color_and_scale.py" beforeDir="false" afterPath="$PROJECT_DIR$/proof_of_concepts/bubble_map_with_color_and_scale.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,17 +29,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/proof_of_concepts" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/proof_of_concepts" />
+      <recent name="$PROJECT_DIR$/good_work" />
       <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.bubble_map_with_color_and_scale">
+  <component name="RunManager" selected="Python.plotly_graph_objects_test">
     <configuration name="bubble_map_with_color_and_scale" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC110-Final" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -52,13 +60,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="bubble_map_with_delta_proportion_bubbles" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CSC110-Final" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/good_work" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/good_work/bubble_map_with_delta_proportion_bubbles.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="plotly_graph_objects_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC110-Final" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing_sandbox" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -117,10 +140,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.plotly_graph_objects_test" />
+        <item itemvalue="Python.bubble_map_with_delta_proportion_bubbles" />
         <item itemvalue="Python.bubble_map_with_color_and_scale" />
         <item itemvalue="Python.reading_csvs_pandas" />
         <item itemvalue="Python.reading_csvs_dataclass" />
-        <item itemvalue="Python.plotly_graph_objects_test" />
       </list>
     </recent_temporary>
   </component>
