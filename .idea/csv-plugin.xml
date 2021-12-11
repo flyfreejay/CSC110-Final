@@ -31,6 +31,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/final_copy/data/uscities.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/testing_sandbox/2014_us_cities.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

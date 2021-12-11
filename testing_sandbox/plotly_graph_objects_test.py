@@ -11,7 +11,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 # converts the csv file into the data frame
-df = pd.read_csv('../data/2014_us_cities.csv')
+df = pd.read_csv('2014_us_cities.csv')
 # return the header of the dataframe
 df.head()
 

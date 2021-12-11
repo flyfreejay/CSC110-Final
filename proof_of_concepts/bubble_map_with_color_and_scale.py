@@ -20,7 +20,7 @@ with open('../data/state_colour_data.csv') as file:
     for row in reader:
         process_row(row, state_colour)
 
-coordinates = pd.read_csv('../data/2014_us_cities.csv')
+coordinates = pd.read_csv('../testing_sandbox/2014_us_cities.csv')
 hate_crime_data = pd.read_csv('../data/hate_crime_data.csv')
 # instantiate a new column called colour, I just needed to assign it placeholder dummy values
 hate_crime_data['colour'] = hate_crime_data['US City']

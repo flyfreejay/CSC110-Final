@@ -3,7 +3,7 @@
 import plotly.graph_objects as go
 import pandas as pd
 
-df = pd.read_csv('../data/2014_us_cities.csv')
+df = pd.read_csv('2014_us_cities.csv')
 df = df[0:10]
 
 fig1 = go.Figure()

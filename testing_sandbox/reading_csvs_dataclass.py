@@ -20,7 +20,7 @@ def process_row(row: list[str]) -> City:
     return City(row[0], float(row[2]), float(row[3]))
 
 
-with open('../data/2014_us_cities.csv') as file:
+with open('2014_us_cities.csv') as file:
     reader = csv.reader(file)
     headers = next(reader)
     data = []

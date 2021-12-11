@@ -9,7 +9,7 @@ import pandas as pd
 def draw_bubble_map() -> None:
     """Draw the bubble map"""
     traces = separate_red_and_blue()
-    labels = ('Republican Cities', 'Democratic Cities')
+    labels = ('Republican', 'Democratic')
 
     fig = go.Figure()
 
@@ -43,8 +43,7 @@ def draw_bubble_map() -> None:
 
 def separate_red_and_blue() \
         -> tuple[pandas.DataFrame, pandas.DataFrame]:
-    """Return the rows of hate_crime_data.csv separated into two dataframes, each corresponding to
-    red (republican), or blue (democrat) with regards to the state's political leaning.
+    """Return the rows of hate_crime_data.csv separated into two dataframes, a
     """
 
     hate_crime_data_df = process_hate_crime_csv()
@@ -121,4 +120,3 @@ def process_row(row: list[str], state_colour: dict[str, str]) -> None:
     """Convert a row to a mapping of a state and its colour
     """
     state_colour[row[0]] = row[1]
-
