@@ -88,7 +88,7 @@ for i in range(len(traces)):
         name=labels[i]))
 
 fig.update_layout(
-    title_text='US City Colours<br>(Click legend to toggle traces)',
+    title_text='Percentage Increase in AAPI Hate Crimes<br>(Click legend to toggle traces)',
     showlegend=True,
     geo=dict(
         scope='usa',
