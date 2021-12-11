@@ -70,7 +70,7 @@ fig.add_trace(go.Scattergeo(
     lat=hate_crime_data_df['lat'],
     text=(hate_crime_data_df['US City'] + ', ' + hate_crime_data_df['Change Anti-Asian Hate Crimes'] + ' increase'),
     marker=dict(
-        size=size_list,
+        size=hate_crime_data_df['size'].to_numpy(dtype=int),
         color=hate_crime_data_df['colour'],
         line_color='rgb(40,40,40)',
         line_width=0.5,
@@ -79,7 +79,7 @@ fig.add_trace(go.Scattergeo(
     name='US City'))
 
 fig.update_layout(
-    title_text='US City Colours<br>(Click legend to toggle traces)',
+    title_text='US City Colours (Proportion)<br>(Click legend to toggle traces)',
     showlegend=True,
     geo=dict(
         scope='usa',

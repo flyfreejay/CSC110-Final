@@ -20,6 +20,7 @@ with open('../data/state_colour_data.csv') as file:
     for row in reader:
         process_row(row, state_colour)
 
+scale = 50
 coordinates = pd.read_csv('../data/uscities.csv')
 hate_crime_data_df = pd.read_csv('../data/hate_crime_data.csv')
 # instantiate a new column called colour, I just needed to assign it placeholder dummy values
@@ -52,13 +53,12 @@ for i in range(len(hate_crime_data_df)):
     elif hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] == '-':
         hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] = str(hate_crime_data_df['2020 Anti-Asian'][i] * 100) + '%'
 
-hate_crime_data_df['size'] = hate_crime_data_df['2020 Anti-Asian'] - hate_crime_data_df['2020 Anti-Asian']
+hate_crime_data_df['size'] = hate_crime_data_df['2020 Anti-Asian'] - hate_crime_data_df['2019 Anti-Asian']
 
-# make a list representing the sizes the circles should be (I don't know why but the size in marker
-# doesn't like it when I pass it hate_crime_data_df['size'])
-size_list = []
 for i in range(len(hate_crime_data_df)):
-    size_list.append(hate_crime_data_df['size'][i])
+    if hate_crime_data_df['size'][i] <= 0:
+        hate_crime_data_df['size'][i] = 1
+    hate_crime_data_df['size'][i] = hate_crime_data_df['size'][i] * scale
 
 fig = go.Figure()
 
@@ -67,7 +67,7 @@ fig.add_trace(go.Scattergeo(
     lat=hate_crime_data_df['lat'],
     text=(hate_crime_data_df['US City'] + ', ' + hate_crime_data_df['Change Anti-Asian Hate Crimes'] + ' increase'),
     marker=dict(
-        size=size_list,
+        size=hate_crime_data_df['size'].to_numpy(dtype=int),
         color=hate_crime_data_df['colour'],
         line_color='rgb(40,40,40)',
         line_width=0.5,
@@ -76,7 +76,7 @@ fig.add_trace(go.Scattergeo(
     name='US City'))
 
 fig.update_layout(
-    title_text='US City Colours<br>(Click legend to toggle traces)',
+    title_text='US City Colours (Fixed Increase)<br>(Click legend to toggle traces)',
     showlegend=True,
     geo=dict(
         scope='usa',

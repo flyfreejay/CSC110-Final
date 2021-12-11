@@ -63,31 +63,29 @@ hate_crimes_blue = pandas.DataFrame(columns=tuple(hate_crime_data_df.columns))
 for i in range(len(hate_crime_data_df)):
     if hate_crime_data_df.iloc[i]['colour'] == 'crimson':
         hate_crimes_red = hate_crimes_red.append(hate_crime_data_df.iloc[i])
-size_list = []
-for i in range(len(hate_crimes_red)):
-    size_list.append(hate_crime_data_df['size'][i])
 
 for i in range(len(hate_crime_data_df)):
     if hate_crime_data_df.iloc[i]['colour'] == 'royalblue':
         hate_crimes_blue = hate_crimes_blue.append(hate_crime_data_df.iloc[i])
 
 traces = (hate_crimes_red, hate_crimes_blue)
+labels = ('Republican Cities', 'Democratic Cities')
 
 fig = go.Figure()
 
-for trace in traces:
+for i in range(len(traces)):
     fig.add_trace(go.Scattergeo(
-        lon=trace['lon'],
-        lat=trace['lat'],
-        text=(trace['US City'] + ', ' + trace['Change Anti-Asian Hate Crimes'] + ' increase'),
+        lon=traces[i]['lon'],
+        lat=traces[i]['lat'],
+        text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes'] + ' increase'),
         marker=dict(
-            size=trace['size'],
-            color=trace['colour'],
+            size=traces[i]['size'].to_numpy(dtype=int),
+            color=traces[i]['colour'],
             line_color='rgb(40,40,40)',
             line_width=0.5,
             sizemode='area'
         ),
-        name='US City'))
+        name=labels[i]))
 
 fig.update_layout(
     title_text='US City Colours<br>(Click legend to toggle traces)',
