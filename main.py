@@ -3,7 +3,8 @@
 Instructions (READ THIS FIRST!)
 ===============================
 
-TODO
+main.py for our final project submission. If you wish to interactively view our visual data,
+uncomment a specified block below and run the main.py. Follow the instructions on the terminal.
 
 Copyright and Usage Information
 ===============================
@@ -12,7 +13,6 @@ TODO
 
 This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
 """
-
 
 if __name__ == '__main__':
     import python_ta
@@ -27,3 +27,5 @@ if __name__ == '__main__':
 
     python_ta.contracts.DEBUG_CONTRACTS = False
     python_ta.contracts.check_all_contracts()
+
+    #UNCOMMENT THE BLOCK BELOW TO USE THE INTERACTIVE TERMINAL FEATURE
