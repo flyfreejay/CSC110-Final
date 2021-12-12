@@ -1,0 +1,106 @@
+Index: good_work/bar_graph.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"CSC110 Fall 2021 Final Project Submission\n\nInstructions (READ THIS FIRST!)\n===============================\n\nA module for our CSC110 Fall Final Project Submission includes functions that reads from\nthe csv files under the data folder, and draws a visual bar graph with that information\n\nCopyright and Usage Information\n===============================\n\nTODO\n\nThis file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi\n\"\"\"\nimport csv\nimport pandas as pd\nimport plotly.express as px\n\nhate_crime_data = pd.read_csv('../data/hate_crime_data.csv')\nstate_colour_data = pd.read_csv('../data/state_colour_data.csv')\n\n\ndef draw_anti_asian_comparison() -> None:\n    \"\"\"Extract 'US State' column from hate_crime_data.csv and draw a bar-graph\n    comparing the Anti-Asian hate crime numbers in 2019 and 2020 in each state in the data\n    \"\"\"\n    fig = px.bar(hate_crime_data, x=\"US State\", y=['2019 Anti-Asian', '2020 Anti-Asian'])\n    fig.update_layout(barmode='group')\n    fig.update_traces(marker_line_width=0)\n    fig.update_layout(\n        title=\"2019 Anti-Asian Hatecrimes vs 2020 Anti-Asian Hatecrimes\",\n        xaxis_title=\"US State\",\n        yaxis_title=\"Number of Hatecrime Cases\",\n    )\n    fig.show()\n\n\n# def draw_aapi_to_anti_asian_hatecrimes2019() -> None:\n#     \"\"\"\n#     \"\"\"\n#     fig = px.bar(hate_crime_data, x=\"US State\", y=['2019 Anti-Asian', '% of Population-AAPI'])\n#     fig.update_layout(barmode='group')\n#     fig.update_traces(marker_line_width=0)\n#     fig.update_layout(\n#         title=\"Correlation between \",\n#         xaxis_title=\"US State\",\n#         yaxis_title=\"Number of Hatecrime Cases\",\n#     )\n#     fig.show()\n\n# def draw_total_hatecrime_to_anti_asian_hatecrime_2019() -> None:\n#     \"\"\"Extract 'US State' column from hate_crime_data.csv and draw a bar-graph\n#     comparing the numbers of Asian hate crimes to total hate crime numbers\n#     \"\"\"\n#     fig = px.bar(hate_crime_data, x=\"US State\", y=['Total HateCrimes 2019', '2019 Anti-Asian'])\n#     fig.update_layout(barmode='group')\n#     fig.update_traces(marker_line_width=0)\n#     fig.update_layout(\n#         title=\"Total Hatecrimes vs Anti-Asian Hatecrimes in 2019\",\n#         xaxis_title=\"US State\",\n#         yaxis_title=\"Number of Hatecrime Cases\",\n#     )\n#     fig.show()\n\n# change the directory path if this file's location changes\n\n# if __name__ == '__main__':\n# import python_ta\n#\n# python_ta.check_all(config={\n#     'extra-imports': ['csv', 'pandas', 'plotly.express'],\n#     'allowed-io': ['print', 'open', 'input'],\n#     'max-line-length': 100,\n#     'disable': ['R1705', 'C0200']\n# })\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/good_work/bar_graph.py b/good_work/bar_graph.py
+--- a/good_work/bar_graph.py	(revision 82eec7f75181355965484f36fee300c0d9e7c610)
++++ b/good_work/bar_graph.py	(date 1639266796692)
+@@ -9,8 +9,6 @@
+ Copyright and Usage Information
+ ===============================
+ 
+-TODO
+-
+ This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
+ """
+ import csv
+Index: good_work/bubble_map_with_two_traces.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"display a bubble map with color-coded bubbles corresponding to a state's political leaning\nand size proportionate to the increase in hate crimes\"\"\"\nimport pandas\nimport plotly.graph_objects as go\nimport csv\nimport pandas as pd\n\n\ndef draw_bubble_map() -> None:\n    \"\"\"Draw the bubble map\"\"\"\n    traces = separate_red_and_blue()\n    labels = ('Republican', 'Democratic')\n\n    fig = go.Figure()\n\n    for i in range(len(traces)):\n        fig.add_trace(go.Scattergeo(\n            lon=traces[i]['lon'],\n            lat=traces[i]['lat'],\n            text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes'] + ' increase'),\n            marker=dict(\n                size=traces[i]['size'].to_numpy(dtype=int),\n                color=traces[i]['colour'],\n                line_color='rgb(40,40,40)',\n                line_width=0.5,\n                sizemode='area'\n            ),\n            name=labels[i]))\n\n    fig.update_layout(\n        title_text='Percentage Increase in AAPI Hate Crimes<br>(Click legend to toggle traces)',\n        showlegend=True,\n        geo=dict(\n            scope='usa',\n            landcolor='rgb(217, 217, 217)',\n        )\n    )\n\n    # when the bubble map is draw, pandas will output some warnings into the console, do not worry,\n    # the code still runs fine\n    fig.show()\n\n\ndef separate_red_and_blue() \\\n        -> tuple[pandas.DataFrame, pandas.DataFrame]:\n    \"\"\"Return the rows of hate_crime_data.csv separated into two dataframes, a\n    \"\"\"\n\n    hate_crime_data_df = process_hate_crime_csv()\n\n    hate_crimes_red = pandas.DataFrame(columns=tuple(hate_crime_data_df.columns))\n    hate_crimes_blue = pandas.DataFrame(columns=tuple(hate_crime_data_df.columns))\n\n    for i in range(len(hate_crime_data_df)):\n        if hate_crime_data_df.iloc[i]['colour'] == 'crimson':\n            hate_crimes_red = hate_crimes_red.append(hate_crime_data_df.iloc[i])\n\n    for i in range(len(hate_crime_data_df)):\n        if hate_crime_data_df.iloc[i]['colour'] == 'royalblue':\n            hate_crimes_blue = hate_crimes_blue.append(hate_crime_data_df.iloc[i])\n\n    return (hate_crimes_red, hate_crimes_blue)\n\n\ndef process_hate_crime_csv() -> pandas.DataFrame:\n    \"\"\"Make a dataframe representing hate_crime_data.csv, and then add columns representing the\n    city's latitude, longitude, colour (political leaning), and relative size of its 'bubble' on\n    the bubble map.\n    \"\"\"\n    with open('../data/state_colour_data.csv') as file:\n        reader = csv.reader(file)\n        headers = next(reader)\n        state_colour = {}\n\n        for row in reader:\n            process_row(row, state_colour)\n\n    coordinates = pd.read_csv('../data/uscities.csv')\n    hate_crime_data_df = pd.read_csv('../data/hate_crime_data.csv')\n    # instantiate a new column called colour, I just needed to assign it placeholder dummy values\n    hate_crime_data_df['colour'] = hate_crime_data_df['US City']\n    # instantiate a new column called lat, I just needed to assign it placeholder dummy values\n    hate_crime_data_df['lat'] = hate_crime_data_df['US City']\n    # instantiate a new column called lon, I just needed to assign it placeholder dummy values\n    hate_crime_data_df['lon'] = hate_crime_data_df['US City']\n    # instantiate a new column called size, I just needed to assign it placeholder dummy values\n    hate_crime_data_df['size'] = hate_crime_data_df['US City']\n\n    # searches coordinates for cities that are also in hate_crime_data_df, and then assigns the\n    # corresponding latitudes and longitudes from coordinates to the matching city in hate_crime_data_df\n    for i in range(len(hate_crime_data_df)):\n        for j in range(len(coordinates)):\n            if str(hate_crime_data_df['US City'][i]).strip() == coordinates['city'][j]:\n                if hate_crime_data_df['US State'][i] == coordinates['state_id'][j]:\n                    hate_crime_data_df['lat'][i] = float(coordinates['lat'][j])\n                    hate_crime_data_df['lon'][i] = float(coordinates['lng'][j])\n\n    # assigns each city in hate_crime_data_df it's proper colour(ie, political leaning) by indexing the\n    # dictionary state_colour\n    for i in range(len(hate_crime_data_df)):\n        # this line will throw a warning, but the code still works as indented\n        hate_crime_data_df['colour'][i] = state_colour[hate_crime_data_df['US State'][i]]\n\n    for i in range(len(hate_crime_data_df)):\n        if hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] == 'Unchanged':\n            hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] = '0%'\n        elif hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] == '-':\n            hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] = str(\n                hate_crime_data_df['2020 Anti-Asian'][i] * 100) + '%'\n\n    for i in range(len(hate_crime_data_df)):\n        hate_crime_data_df['size'][i] = int(str(hate_crime_data_df['Change Anti-Asian Hate Crimes'][i]).strip('%'))\n        if hate_crime_data_df['size'][i] <= 0:\n            hate_crime_data_df['size'][i] = 5\n\n    return hate_crime_data_df\n\n\ndef process_row(row: list[str], state_colour: dict[str, str]) -> None:\n    \"\"\"Convert a row to a mapping of a state and its colour\n    \"\"\"\n    state_colour[row[0]] = row[1]\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/good_work/bubble_map_with_two_traces.py b/good_work/bubble_map_with_two_traces.py
+--- a/good_work/bubble_map_with_two_traces.py	(revision 82eec7f75181355965484f36fee300c0d9e7c610)
++++ b/good_work/bubble_map_with_two_traces.py	(date 1639267525057)
+@@ -13,11 +13,20 @@
+ 
+     fig = go.Figure()
+ 
++    # iterating through the two traces (Dataframes) in traces
+     for i in range(len(traces)):
++        # fig.add_trace takes go.Scattergeo objects as a parameter
+         fig.add_trace(go.Scattergeo(
++            # longitude parameter
+             lon=traces[i]['lon'],
++            # latitude parameter
+             lat=traces[i]['lat'],
+-            text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes'] + ' increase'),
++            # the text parameter for a given bubble is the name of the city plus the city's percent
++            # increase in anti AAPI hate crimes
++            text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes'] +
++                  ' increase'),
++            # the marker parameter takes a dictionary as a parameter, with the specific keys
++            # corresponding to some attribute of the bubble itself
+             marker=dict(
+                 size=traces[i]['size'].to_numpy(dtype=int),
+                 color=traces[i]['colour'],
+@@ -25,8 +34,12 @@
+                 line_width=0.5,
+                 sizemode='area'
+             ),
++            # name is for the name of all the data points in the set collectively, so since I have
++            # two Dataframes for the two political parties, the name will correspoind to the
++            # Dataframe's political party
+             name=labels[i]))
+ 
++    # update the figure with the newly added properties above
+     fig.update_layout(
+         title_text='Percentage Increase in AAPI Hate Crimes<br>(Click legend to toggle traces)',
+         showlegend=True,
+@@ -36,8 +49,7 @@
+         )
+     )
+ 
+-    # when the bubble map is draw, pandas will output some warnings into the console, do not worry,
+-    # the code still runs fine
++    # display the bubble map
+     fig.show()
+ 
+ 
+@@ -92,6 +104,7 @@
+         for j in range(len(coordinates)):
+             if str(hate_crime_data_df['US City'][i]).strip() == coordinates['city'][j]:
+                 if hate_crime_data_df['US State'][i] == coordinates['state_id'][j]:
++                    # whenever
+                     hate_crime_data_df['lat'][i] = float(coordinates['lat'][j])
+                     hate_crime_data_df['lon'][i] = float(coordinates['lng'][j])
+ 
+Index: .idea/csv-plugin.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CsvFileAttributes\">\n    <option name=\"attributeMap\">\n      <map>\n        <entry key=\"/data/2014_us_cities.csv\">\n          <value>\n            <Attribute>\n              <option name=\"separator\" value=\",\" />\n            </Attribute>\n          </value>\n        </entry>\n        <entry key=\"/data/hate_crime_data.csv\">\n          <value>\n            <Attribute>\n              <option name=\"separator\" value=\",\" />\n            </Attribute>\n          </value>\n        </entry>\n        <entry key=\"/data/state_colour_data.csv\">\n          <value>\n            <Attribute>\n              <option name=\"separator\" value=\",\" />\n            </Attribute>\n          </value>\n        </entry>\n        <entry key=\"/data/uscities.csv\">\n          <value>\n            <Attribute>\n              <option name=\"separator\" value=\",\" />\n            </Attribute>\n          </value>\n        </entry>\n        <entry key=\"/final_copy/data/uscities.csv\">\n          <value>\n            <Attribute>\n              <option name=\"separator\" value=\",\" />\n            </Attribute>\n          </value>\n        </entry>\n        <entry key=\"/testing_sandbox/2014_us_cities.csv\">\n          <value>\n            <Attribute>\n              <option name=\"separator\" value=\",\" />\n            </Attribute>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/csv-plugin.xml b/.idea/csv-plugin.xml
+--- a/.idea/csv-plugin.xml	(revision 82eec7f75181355965484f36fee300c0d9e7c610)
++++ b/.idea/csv-plugin.xml	(date 1639266796754)
+@@ -3,13 +3,6 @@
+   <component name="CsvFileAttributes">
+     <option name="attributeMap">
+       <map>
+-        <entry key="/data/2014_us_cities.csv">
+-          <value>
+-            <Attribute>
+-              <option name="separator" value="," />
+-            </Attribute>
+-          </value>
+-        </entry>
+         <entry key="/data/hate_crime_data.csv">
+           <value>
+             <Attribute>
