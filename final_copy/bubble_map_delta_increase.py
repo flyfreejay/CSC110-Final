@@ -18,7 +18,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 
-def draw_bubble_map() -> None:
+def draw_bubble_map_delta_increase() -> None:
     """Draw the bubble map"""
     traces = separate_red_and_blue()
     labels = ('Republican', 'Democratic')

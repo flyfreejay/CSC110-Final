@@ -31,9 +31,9 @@ def draw_scatter_plot() -> None:
                      y=['2019 Anti-Asian', '2020 Anti-Asian'])
 
     fig.update_layout(
-        title="Asian Population % to Anti-Asian hatecrime cases in 2019",
+        title="Asian Population % to Anti-Asian Hate Crime Cases in 2019",
         xaxis_title="% of Asian Population",
-        yaxis_title="Number of Asian Hate crime Cases",
+        yaxis_title="Number of Asian Hate Crime Cases",
     )
 
     fig.show()

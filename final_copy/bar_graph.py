@@ -25,9 +25,9 @@ def draw_bar_graph() -> None:
     fig.update_layout(barmode='group')
     fig.update_traces(marker_line_width=0)
     fig.update_layout(
-        title='2019 Anti-Asian Hatecrimes vs 2020 Anti-Asian Hatecrimes',
+        title='2019 Anti-Asian Hate Crimes vs 2020 Anti-Asian Hate Crimes',
         xaxis_title='US State',
-        yaxis_title='Number of Hatecrime Cases',
+        yaxis_title='Number of Hate Crime Cases',
     )
     fig.show()
 
