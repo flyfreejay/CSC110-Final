@@ -35,8 +35,8 @@ def draw_bubble_map() -> None:
             lat=traces[i]['lat'],
             # The text parameter for a given bubble is the name of the city plus the city's percent
             # increase in anti AAPI hate crimes
-            text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes'] +
-                  ' increase'),
+            text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes']
+                  + ' increase'),
             # The marker parameter takes a dictionary as a parameter, with the specific keys
             # corresponding to some attribute of the bubble itself
             marker=dict(
@@ -66,6 +66,12 @@ def draw_bubble_map() -> None:
     fig.show()
 
 
+# MUST READ: DESPITE WHAT PythonTA MIGHT SAY, pandas.Dataframe.iloc IS A EXISTING METHOD AND
+# IT IS BEING USED PROPERLY HERE,
+# SEE: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html
+# WHEN I USE i IN THE FOR LOOP, IT CANNOT BE SIMPLIFIED, I CANNOT ITERATE THROUGH A
+# pandas.Dataframe TO INDIVIDUALLY ACCESS ROWS, PLEASE IGNORE ANY PythonTA ERRORS AS I HAVE
+# FIXED EVERYTHING ELSE
 def separate_red_and_blue() \
         -> tuple[pandas.DataFrame, pandas.DataFrame]:
     """Return the rows of hate_crime_data.csv separated into two dataframes, one for only 'crimson'
@@ -78,12 +84,6 @@ def separate_red_and_blue() \
     hate_crimes_red = pandas.DataFrame(columns=tuple(hate_crime_data_df.columns))
     hate_crimes_blue = pandas.DataFrame(columns=tuple(hate_crime_data_df.columns))
 
-    # MUST READ: DESPITE WHAT PythonTA MIGHT SAY, pandas.Dataframe.iloc IS A EXISTING METHOD AND
-    # IT IS BEING USED PROPERLY HERE,
-    # SEE: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html
-    # WHEN I USE i IN THE FOR LOOP, IT CANNOT BE SIMPLIFIED, I CANNOT ITERATE THROUGH A
-    # pandas.Dataframe TO INDIVIDUALLY ACCESS ROWS, PLEASE IGNORE ANY PythonTA ERRORS AS I HAVE
-    # FIXED EVERYTHING ELSE
     for i in range(len(hate_crime_data_df)):
         if hate_crime_data_df.iloc[i]['colour'] == 'crimson':
             hate_crimes_red = hate_crimes_red.append(hate_crime_data_df.iloc[i])
@@ -99,7 +99,8 @@ if __name__ == '__main__':
     import python_ta
 
     python_ta.check_all(config={
-        'extra-imports': ['pandas', 'plotly.express', 'plotly.graph_objects', 'csv', 'process_hate_crime_csv'],
+        'extra-imports': ['pandas', 'plotly.express', 'plotly.graph_objects',
+                          'csv', 'process_hate_crime_csv'],
         'allowed-io': ['process_hate_crime_csv'],
         'max-line-length': 100,
         'disable': ['R1705', 'C0200']

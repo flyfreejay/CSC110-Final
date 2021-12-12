@@ -15,7 +15,7 @@ This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
 import plotly.express as px
 import pandas as pd
 import csv
-from process_hate_crime_csv import process_hate_crime_csv
+from process_hate_crime_csv_old import process_hate_crime_csv
 
 
 def read_csv_file_return_dict(filename: str) -> dict[str, str]:

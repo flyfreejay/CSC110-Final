@@ -15,7 +15,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def draw_anti_asian_comparison() -> None:
+def draw_bar_graph() -> None:
     """Extract 'US State' column from hate_crime_data.csv and draw a bar-graph
         comparing the Anti-Asian hate crime numbers in 2019 and 2020 in each state in the data
     """

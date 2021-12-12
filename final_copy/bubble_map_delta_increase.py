@@ -81,7 +81,7 @@ def separate_red_and_blue() \
     # MUST READ: DESPITE WHAT PythonTA MIGHT SAY, pandas.Dataframe.iloc IS A EXISTING METHOD AND
     # IT IS BEING USED PROPERLY HERE,
     # SEE: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html
-    # WHEN I USE i IN THE OFR LOOP, IT CANNOT BE SIMPLIFIED, I CANNOT ITERATE THROUGH A
+    # WHEN I USE i IN THE FOR LOOP, IT CANNOT BE SIMPLIFIED, I CANNOT ITERATE THROUGH A
     # pandas.Dataframe TO INDIVIDUALLY ACCESS ROWS, PLEASE IGNORE ANY PythonTA ERRORS AS I HAVE
     # FIXED EVERYTHING ELSE
     for i in range(len(hate_crime_data_df)):

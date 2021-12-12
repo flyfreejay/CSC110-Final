@@ -25,7 +25,7 @@ def process_hate_crime_csv() -> pandas.DataFrame:
     # This block creates a dictionary mapping a state's name to its political leaning colour
     with open('../data/state_colour_data.csv') as file:
         reader = csv.reader(file)
-        headers = next(reader)
+        next(reader)
         state_colour = {}
         for row in reader:
             process_row(row, state_colour)
@@ -38,23 +38,27 @@ def process_hate_crime_csv() -> pandas.DataFrame:
     hate_crime_data_df['colour'] = hate_crime_data_df['US City']
     hate_crime_data_df['lat'] = hate_crime_data_df['US City']
     hate_crime_data_df['lon'] = hate_crime_data_df['US City']
-    hate_crime_data_df['size'] = hate_crime_data_df['US City']
+    hate_crime_data_df['percentage'] = hate_crime_data_df['US City']
 
     # Searches coordinates for cities that are also in hate_crime_data_df, and then assigns the
-    # Corresponding latitudes and longitudes from coordinates to the matching city in hate_crime_data_df
+    # Corresponding latitudes and longitudes from coordinates to the matching city in
+    # hate_crime_data_df
     for i in range(len(hate_crime_data_df)):
         for j in range(len(coordinates)):
             # Making sure both the state and city are matching
-            if str(hate_crime_data_df['US City'][i]).strip() == coordinates['city'][j]:
-                if hate_crime_data_df['US State'][i] == coordinates['state_id'][j]:
-                    # Whenever any value is trying to be set to be a copy of a slice
-                    # (single element) of a Dataframe, pandas will throw a warning, the code will
-                    # still run nonetheless
-                    hate_crime_data_df['lat'][i] = float(coordinates['lat'][j])
-                    hate_crime_data_df['lon'][i] = float(coordinates['lng'][j])
+            if str(hate_crime_data_df['US City'][i]).strip() == coordinates['city'][j] and \
+                    hate_crime_data_df['US State'][i] == coordinates['state_id'][j]:
+                # Whenever any value is trying to be set to be a copy of a slice
+                # (single element) of a Dataframe, pandas will throw a warning, the code will
+                # still run nonetheless
+                hate_crime_data_df['lat'][i] = float(coordinates['lat'][j])
+                hate_crime_data_df['lon'][i] = float(coordinates['lng'][j])
 
-    # Assigns each city in hate_crime_data_df it's proper colour(ie, political leaning) by indexing the
-    # dictionary state_colour
+    # WHEN I USE i IN THE FOR LOOP, IT CANNOT BE SIMPLIFIED, I CANNOT ITERATE THROUGH A
+    # pandas.Dataframe TO INDIVIDUALLY ACCESS ROWS, PLEASE IGNORE ANY PythonTA ERRORS AS I HAVE
+    # FIXED EVERYTHING ELSE
+    # Assigns each city in hate_crime_data_df it's proper colour(ie, political leaning) by indexing
+    # the dictionary state_colour
     for i in range(len(hate_crime_data_df)):
         # this line will throw a warning, but the code still works as indented
         hate_crime_data_df['colour'][i] = state_colour[hate_crime_data_df['US State'][i]]
@@ -71,9 +75,10 @@ def process_hate_crime_csv() -> pandas.DataFrame:
     # The size of the bubble should be equal to the percentage increase in hate crimes, if there is
     # a decrease or no change, the size of the bubble will be set to 5
     for i in range(len(hate_crime_data_df)):
-        hate_crime_data_df['size'][i] = int(str(hate_crime_data_df['Change Anti-Asian Hate Crimes'][i]).strip('%'))
-        if hate_crime_data_df['size'][i] <= 0:
-            hate_crime_data_df['size'][i] = 1
+        hate_crime_data_df['percentage'][i] = \
+            int(str(hate_crime_data_df['Change Anti-Asian Hate Crimes'][i]).strip('%'))
+        if hate_crime_data_df['percentage'][i] <= 0:
+            hate_crime_data_df['percentage'][i] = 1
 
     return hate_crime_data_df
 
