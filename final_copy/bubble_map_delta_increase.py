@@ -12,7 +12,7 @@ Copyright and Usage Information
 
 This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
 """
-
+# IMPORTS
 import csv
 import plotly.graph_objects as go
 import pandas as pd

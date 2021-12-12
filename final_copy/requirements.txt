@@ -1,0 +1,10 @@
+# CSC110 Fall 2021: Packages for CSC110 Final Project
+
+# Testing and code checking
+hypothesis
+pytest
+python-ta
+
+#Graphics and Data Visualization
+plotly
+pandas
