@@ -65,7 +65,7 @@ if __name__ == '__main__':
             draw_aapi_to_asian_hatecrime()
 
         elif usr_input == '3':
-            create_tree_map()
+            draw_tree_map()
 
         elif usr_input == '4':
             draw_bubble_map()

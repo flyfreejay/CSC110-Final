@@ -23,7 +23,7 @@ def process_row(row: list[str], state_colour: dict[str, str]) -> None:
     state_colour[row[0]] = row[1]
 
 
-def create_tree_map() -> None:
+def draw_total_aapi_hate_crime_2020_tree_map() -> None:
     """
     Draws a tree map showing the hierarchy for cities in United States based on the states the
     city belongs to and the political party for each state. The size of each rectangle in the
