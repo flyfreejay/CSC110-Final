@@ -57,7 +57,7 @@ def draw_total_aapi_hate_crime_2020_tree_map() -> None:
             df_hate_crime['party'][row] = 'Democratic'
 
     fig = px.treemap(df_hate_crime, path=[px.Constant('USA'), 'party', 'US State', 'US City'],
-                     values='size', color='colour',
+                     values='percentage', color='colour',
                      title='Total Percentage Increase of AAPI Hate Crimes in Major US Cities, '
                            '2019-2020')
     fig.update_layout(margin=dict(t=50, l=25, r=25, b=25))
