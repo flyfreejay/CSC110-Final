@@ -6,6 +6,9 @@ import pandas as pd
 df = pd.read_csv('2014_us_cities.csv')
 df = df[0:10]
 
+for row in df:
+    print(row)
+
 fig1 = go.Figure()
 
 fig1.add_trace(go.Scattergeo(

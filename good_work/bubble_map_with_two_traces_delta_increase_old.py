@@ -5,7 +5,7 @@ Instructions (READ THIS FIRST!)
 
 A module for our CSC110 Fall Final Project Submission includes functions that reads from
 the csv files under the data folder, and displays a bubble map with color-coded bubbles
-corresponding to a state's political leaning and size proportionate to the increase in hate crimes
+corresponding to a state's political leaning and size equal to the net increase in hate crimes
 
 Copyright and Usage Information
 ===============================
@@ -13,14 +13,13 @@ Copyright and Usage Information
 This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
 """
 
-
 import pandas
 import plotly.graph_objects as go
 import csv
 import pandas as pd
 
 
-def draw_bubble_map_with_percentage_proportions() -> None:
+def draw_bubble_map_with_delta_increase_proportions() -> None:
     """Draw the bubble map"""
     traces = separate_red_and_blue()
     labels = ('Republican', 'Democratic')
@@ -37,8 +36,8 @@ def draw_bubble_map_with_percentage_proportions() -> None:
             lat=traces[i]['lat'],
             # The text parameter for a given bubble is the name of the city plus the city's percent
             # increase in anti AAPI hate crimes
-            text=(traces[i]['US City'] + ', ' + traces[i]['Change Anti-Asian Hate Crimes'] +
-                  ' increase'),
+            text=(traces[i]['US City'] + ', ' + traces[i]['delta change'] +
+                  ' crime(s) more than 2019'),
             # The marker parameter takes a dictionary as a parameter, with the specific keys
             # corresponding to some attribute of the bubble itself
             marker=dict(
@@ -55,7 +54,7 @@ def draw_bubble_map_with_percentage_proportions() -> None:
 
     # Update the figure with the newly added properties above
     fig.update_layout(
-        title_text='Percentage Increase in anti-AAPI Hate Crimes in American Cities'
+        title_text='Total Increase in anti-AAPI Hate Crimes in American Cities'
                    '<br>(Click legend to toggle traces)',
         showlegend=True,
         geo=dict(
@@ -97,6 +96,9 @@ def process_hate_crime_csv() -> pandas.DataFrame:
     the bubble map.
     """
 
+    # Constant multiplier of the bubble size, so the bubble is not microscopic
+    scale = 50
+
     # This block creates a dictionary mapping a state's name to its political leaning colour
     with open('../data/state_colour_data.csv') as file:
         reader = csv.reader(file)
@@ -113,7 +115,6 @@ def process_hate_crime_csv() -> pandas.DataFrame:
     hate_crime_data_df['colour'] = hate_crime_data_df['US City']
     hate_crime_data_df['lat'] = hate_crime_data_df['US City']
     hate_crime_data_df['lon'] = hate_crime_data_df['US City']
-    hate_crime_data_df['size'] = hate_crime_data_df['US City']
 
     # Searches coordinates for cities that are also in hate_crime_data_df, and then assigns the
     # Corresponding latitudes and longitudes from coordinates to the matching city in hate_crime_data_df
@@ -143,12 +144,19 @@ def process_hate_crime_csv() -> pandas.DataFrame:
             hate_crime_data_df['Change Anti-Asian Hate Crimes'][i] = str(
                 hate_crime_data_df['2020 Anti-Asian'][i] * 100) + '%'
 
-    # The size of the bubble should be equal to the percentage increase in hate crimes, if there is
-    # a decrease or no change, the size of the bubble will be set to 5
+    # Create two new columns: size is for the integer value that determines the size of the bubble,
+    # delta change is for the label of the graph to show how many more crimes there were in 2020
+    # than there were in 2020
+    hate_crime_data_df['size'] = hate_crime_data_df['2020 Anti-Asian'] - hate_crime_data_df['2019 Anti-Asian']
+    hate_crime_data_df['delta change'] = hate_crime_data_df['2020 Anti-Asian'] - hate_crime_data_df['2019 Anti-Asian']
+    hate_crime_data_df['delta change'] = hate_crime_data_df['delta change'].to_numpy(dtype=str)
+
     for i in range(len(hate_crime_data_df)):
-        hate_crime_data_df['size'][i] = int(str(hate_crime_data_df['Change Anti-Asian Hate Crimes'][i]).strip('%'))
+        # Making the bubble as small as possible if there was no increase in crimes
         if hate_crime_data_df['size'][i] <= 0:
-            hate_crime_data_df['size'][i] = 5
+            hate_crime_data_df['size'][i] = 1
+        else:
+            hate_crime_data_df['size'][i] = hate_crime_data_df['size'][i] * scale
 
     return hate_crime_data_df
 
