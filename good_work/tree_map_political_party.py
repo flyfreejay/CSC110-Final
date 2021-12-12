@@ -1,3 +1,17 @@
+"""CSC110 Fall 2021 Final Project Submission
+
+Instructions (READ THIS FIRST!)
+===============================
+
+A module for our CSC110 Fall Final Project Submission includes functions that reads from
+the csv files under the data folder, and draws a tree map.
+
+Copyright and Usage Information
+===============================
+
+This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
+"""
+
 import plotly.express as px
 import pandas as pd
 import csv
