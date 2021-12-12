@@ -24,6 +24,12 @@ def process_row(row: list[str], state_colour: dict[str, str]) -> None:
 
 
 def create_tree_map() -> None:
+    """
+    Draws a tree map showing the hierarchy for cities in United States based on the states the
+    city belongs to and the political party for each state. The size of each rectangle in the
+    tree map represents the total number of AAPI hate crimes reported in 2020 for that area/region.
+
+    """
     df_hate_crime = pd.read_csv('../data/hate_crime_data.csv')
     dic = read_csv_file_return_dict('../data/state_colour_data.csv')
 
@@ -38,6 +44,7 @@ def create_tree_map() -> None:
             df_hate_crime['party'][row] = 'Democratic'
 
     fig = px.treemap(df_hate_crime, path=[px.Constant('USA'), 'party', 'US State', 'US City'],
-                     values='Total Hate Crimes 2020', color='colour')
+                     values='Total Hate Crimes 2020', color='colour',
+                     title='Total Number of AAPI Hate Crimes in United States, 2020')
     fig.update_layout(margin=dict(t=50, l=25, r=25, b=25))
     fig.show()
