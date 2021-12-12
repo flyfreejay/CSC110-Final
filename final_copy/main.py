@@ -49,8 +49,8 @@ draw_scatter_plot()
 # print()
 # usr_input = ''
 #
-# while usr_input != '5':
-#     usr_input = input('YOUR INPUT(1-5): ')
+# while usr_input != '6':
+#     usr_input = input('YOUR INPUT(1-6): ')
 #     if usr_input == '1':
 #         draw_bar_graph()
 #
@@ -71,6 +71,7 @@ draw_scatter_plot()
 #
 # print('You have quit the program successfully.')
 
+# ============TERMINAL GUI===============
 if __name__ == '__main__':
     import python_ta
 
