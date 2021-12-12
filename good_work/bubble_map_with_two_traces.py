@@ -20,7 +20,7 @@ import csv
 import pandas as pd
 
 
-def draw_bubble_map() -> None:
+def draw_bubble_map_with_percentage_proportions() -> None:
     """Draw the bubble map"""
     traces = separate_red_and_blue()
     labels = ('Republican', 'Democratic')
