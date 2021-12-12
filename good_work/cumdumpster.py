@@ -65,7 +65,7 @@ if __name__ == '__main__':
             draw_aapi_to_asian_hatecrime()
 
         elif usr_input == '3':
-            draw_tree_map()
+            draw_total_aapi_hate_crime_2020_tree_map()
 
         elif usr_input == '4':
             draw_bubble_map()
