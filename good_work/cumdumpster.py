@@ -62,7 +62,7 @@ if __name__ == '__main__':
             draw_anti_asian_comparison()
 
         elif usr_input == '2':
-            draw_aapi_vs_anti_asian_hatecrime()
+            draw_aapi_to_asian_hatecrime()
 
         elif usr_input == '3':
             create_tree_map()

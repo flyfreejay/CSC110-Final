@@ -8,9 +8,6 @@ uncomment a specified block below and run the main.py. Follow the instructions o
 
 Copyright and Usage Information
 ===============================
-
-TODO
-
 This file is Copyright (c) 2021 Jay Lee, Andy Feng, and Jamie Yi
 """
 
