@@ -55,8 +55,8 @@ def process_hate_crime_csv() -> pandas.DataFrame:
                 hate_crime_data_df['lon'][i] = float(coordinates['lng'][j])
 
     # WHEN I USE i IN THE FOR LOOP, IT CANNOT BE SIMPLIFIED, I CANNOT ITERATE THROUGH A
-    # pandas.Dataframe TO INDIVIDUALLY ACCESS ROWS, PLEASE IGNORE ANY PythonTA ERRORS AS I HAVE
-    # FIXED EVERYTHING ELSE
+    # pandas.Dataframe TO INDIVIDUALLY ACCESS ROWS, ESPECIALLY SINCE I USE i INDEX TWO SEPARATE TWO
+    # DIFFERENT DATAFRAME COLUMNS PLEASE IGNORE ANY PythonTA ERRORS AS I HAVE FIXED EVERYTHING ELSE
     # Assigns each city in hate_crime_data_df it's proper colour(ie, political leaning) by indexing
     # the dictionary state_colour
     for i in range(len(hate_crime_data_df)):

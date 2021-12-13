@@ -20,8 +20,8 @@ def draw_tree_map() -> None:
     """
     Draws a tree map showing the hierarchy for cities in United States based on the states the
     city belongs to and the political party for each state. The size of each rectangle in the
-    tree map represents the total percentage increase of AAPI hate crimes reported in 2020 for
-    that area/region.
+    tree map represents the total percentage increase of anti AAPI hate crimes reported in 2020
+    for that area/region.
 
     """
     df_hate_crime = process_hate_crime_csv()
