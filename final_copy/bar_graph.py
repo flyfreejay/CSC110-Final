@@ -20,7 +20,7 @@ def draw_bar_graph() -> None:
     """Extract 'US State' column from hate_crime_data.csv and draw a bar-graph
         comparing the Anti-Asian hate crime numbers in 2019 and 2020 in each state in the data
     """
-    hate_crime_data = pd.read_csv('../data/hate_crime_data.csv')
+    hate_crime_data = pd.read_csv('data/hate_crime_data.csv')
 
     fig = px.bar(hate_crime_data, x='US State', y=['2019 Anti-Asian', '2020 Anti-Asian'])
     fig.update_layout(barmode='group')

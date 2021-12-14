@@ -105,15 +105,15 @@ def process_hate_crime_csv() -> pd.DataFrame:
     scale = 50
 
     # This block creates a dictionary mapping a state's name to its political leaning colour
-    with open('../data/state_colour_data.csv') as file:
+    with open('data/state_colour_data.csv') as file:
         reader = csv.reader(file)
         next(reader)
         state_colour = {}
         for row in reader:
             process_row(row, state_colour)
 
-    coordinates = pd.read_csv('../data/uscities.csv')
-    hate_crime_data_df = pd.read_csv('../data/hate_crime_data.csv')
+    coordinates = pd.read_csv('data/uscities.csv')
+    hate_crime_data_df = pd.read_csv('data/hate_crime_data.csv')
 
     # In order to work with specific slices (single elements) of a Dataframe, I must instantiate
     # The new columns first (like in Java), so here I assign them a placeholder dummy column

@@ -24,7 +24,7 @@ def draw_scatter_plot() -> None:
 
     # remove '%' character at the end and parse the data to float datatype so that
     # plotly can sort them
-    hate_crime_data = pd.read_csv('../data/hate_crime_data.csv')
+    hate_crime_data = pd.read_csv('data/hate_crime_data.csv')
     hate_crime_data['% of Population-AAPI-int'] = \
         hate_crime_data['% of Population-AAPI'].str.strip("%").astype('float64')
     fig = px.scatter(hate_crime_data, x='% of Population-AAPI-int',
